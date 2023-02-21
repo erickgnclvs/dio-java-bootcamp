@@ -1,3 +1,6 @@
+package edu.studies.loopsandarrays;
+
+import java.util.Random;
 import java.util.Scanner;
 
 public class LoopsAndArrays {
@@ -123,8 +126,26 @@ public class LoopsAndArrays {
         }
     }
 
+    public void randomNumbers() {
+        Random rand = new Random();
+        int[] randoms = new int[20];
+
+        for (int i=0; i<randoms.length; i++) {
+            int number = rand.nextInt(100);
+            randoms[i] = number;
+        }
+
+        for (int number : randoms) {
+            System.out.print(number + " ");
+        }
+        System.out.println("\ndoubles: ");
+        for (int number : randoms) {
+            System.out.print(number*2 + " ");
+        }
+    }
+
     public static void main(String[] args) {
         LoopsAndArrays laa = new LoopsAndArrays();
-        laa.consonants();
+        laa.randomNumbers();
     }
 }
