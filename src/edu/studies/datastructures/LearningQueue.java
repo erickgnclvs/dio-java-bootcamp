@@ -1,14 +1,14 @@
 package edu.studies.datastructures;
 
 public class LearningQueue {
-    public static class Node {
-        private Object object;
-        private Node nextNode;
+    public static class Node<T> {
+        private T object;
+        private Node<T> nextNode;
 
         public Node() {
         }
 
-        public Node(Object object) {
+        public Node(T object) {
             this.nextNode = null;
             this.object = object;
         }
@@ -17,7 +17,7 @@ public class LearningQueue {
             return object;
         }
 
-        public void setObject(Object object) {
+        public void setObject(T object) {
             this.object = object;
         }
 
@@ -37,8 +37,8 @@ public class LearningQueue {
         }
     }
 
-    public static class Queue {
-        private Node refNodeInQueue;
+    public static class Queue<T> {
+        private Node<T> refNodeInQueue;
 
         public Queue() {
             this.refNodeInQueue = null;
@@ -52,12 +52,13 @@ public class LearningQueue {
             }
         }
 
-        public void enqueue(Node newNode) {
+        public void enqueue(T obj) {
+            Node newNode = new Node(obj);
             newNode.setNextNode(refNodeInQueue);
             refNodeInQueue = newNode;
         }
 
-        public Node first() {
+        public T first() {
             if (!this.isEmpty()) {
                 Node firstNode = refNodeInQueue;
                 while (true) {
@@ -67,13 +68,13 @@ public class LearningQueue {
                         break;
                     }
                 }
-                return firstNode;
+                return (T) firstNode.getObject();
             } else {
                 return null;
             }
         }
 
-        public Node dequeue() {
+        public T dequeue() {
             if (!this.isEmpty()) {
                 Node firstNode = refNodeInQueue;
                 Node tempNode = refNodeInQueue;
@@ -86,7 +87,7 @@ public class LearningQueue {
                         break;
                     }
                 }
-                return firstNode;
+                return (T) firstNode.getObject();
             } else {
                 return null;
             }
@@ -118,11 +119,11 @@ public class LearningQueue {
     }
 
     public static void main(String[] args) {
-        Queue myQueue = new Queue();
-        myQueue.enqueue(new Node("first"));
-        myQueue.enqueue(new Node("second"));
-        myQueue.enqueue(new Node("third"));
-        myQueue.enqueue(new Node("fourth"));
+        Queue<String> myQueue = new Queue<>();
+        myQueue.enqueue("first");
+        myQueue.enqueue("second");
+        myQueue.enqueue("third");
+        myQueue.enqueue("fourth");
 
         System.out.println(myQueue);
 
@@ -132,7 +133,7 @@ public class LearningQueue {
 
         System.out.println(myQueue.first());
 
-        myQueue.enqueue(new Node("last"));
+        myQueue.enqueue("last");
 
         System.out.println(myQueue);
     }
