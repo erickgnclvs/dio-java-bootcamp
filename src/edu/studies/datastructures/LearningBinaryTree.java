@@ -132,7 +132,7 @@ public class LearningBinaryTree {
                 if (currentNode == null) {
                     System.out.println("Object not found - try block");
                 }
-                
+
                 if (parentNode == null) {
                     if (currentNode.getRightNode() == null) {
                         this.rootNode = currentNode.getLeftNode();
