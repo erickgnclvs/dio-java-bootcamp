@@ -196,7 +196,7 @@ public class LearningBinaryTree {
 
     }
 
-    public static class Obj extends TreeObject<Obj> {
+    public class Obj extends TreeObject<Obj> {
 
         Integer myValue;
 
@@ -235,7 +235,7 @@ public class LearningBinaryTree {
         }
     }
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
         BinaryTree<Obj> br = new BinaryTree<>();
 
         br.insert(new Obj(13));
